@@ -11,40 +11,40 @@ export const basicFecth = async (endpoint) => {
         const url = `${BASE_URL}${endpoint}&${API_KEY}&${language}`
         const request = await fetch(url)
         const diceJson = await request.json()
+        const resultMovies = diceJson.results
 
-        const arrayMovies = diceJson.results
-
-        console.log(url)
-
-        const nameMoviesAll = arrayMovies.map(element => {
-            const { title, overview, poster_path } = element
-            return [
-                title,
-                overview,
-                poster_path
-            ]
-        });
-
-        console.log(nameMoviesAll)
-        return nameMoviesAll
-
-        function createMovieStructure() {
-            return nameMoviesAll.map((item) => {
-                console.log(item)
-            })
+        const structure = createStructure()
+        function createStructure() {
+            const { title, overview, poster_path } = resultMovies[count]
+            return (`
+            <div class="movie_flex">
+                <div class="movie_poster">
+                    <img src="https://image.tmdb.org/t/p/w300${poster_path}" alt="Movie">
+                </div>
+                <div class="movie_info">
+                    <h2 class="movie_title">${title}</h2>
+                    <p class="movie_paragraph">${overview}</p>
+                </div>
+            </div>
+            `)
         }
+
+        function insertInTheDom(dom) {
+            console.log(dom)
+            insertStructure.innerHTML = dom
+        } insertInTheDom(structure)
 
     } catch (erro) {
         console.log(erro)
     }
 }
 
-
+let count = -1
 btn.addEventListener("click", () => {
+    count++
+    console.log(count)
     basicFecth('/discover/movie?width_genres=288')
 })
-
-
 
 
 
