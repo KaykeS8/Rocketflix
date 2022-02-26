@@ -38,10 +38,10 @@ body {
 
 .main-info {
     display: flex;
-    height: 50vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 6rem;
 }
 
 .main-info h1 {
@@ -70,6 +70,9 @@ body {
     font-weight: bold;
     border-radius: .5rem;
     border: none;
+}
+
+.btn:hover {
     background-color: var(--bg-button);
 }
 
@@ -83,4 +86,50 @@ body {
     text-align: center;
     margin: 0 auto;
     font-size: 1.4rem;
+}
+
+
+/* MOVIE FETCH */
+
+.movie-fetch {
+    display: flex;
+    margin-bottom: 3rem;
+}
+
+.movie_flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.movie_poster img{
+    width: 17.1rem;
+    margin-right: 2rem;
+}
+
+.movie_info h2 {
+    font-size: 2rem;
+    text-align: left;
+}
+
+
+.movie_info p {
+    font-size: 1.3rem;
+    text-align: left;
+}
+
+@media screen and (max-width:600px) {
+    .movie_info p {
+        text-align: center;
+        padding: .5rem;
+    }
+
+    .main-info h2 {
+        text-align: center;
+        padding: .5rem;
+    }
+
+    .main-info p {
+        padding: .5rem;
+    }
 }
